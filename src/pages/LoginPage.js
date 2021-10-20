@@ -58,8 +58,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.1rem",
     fontFamily: "Arbutus Slab",
     "&:hover": {
-      backgroundColor: "#0069d9",
-      borderColor: "#0062cc",
+      backgroundColor: theme.palette.secondary.dark,
       boxShadow: "none",
     },
   },
@@ -106,6 +105,7 @@ export default function LoginPage() {
           <form className={classes.form} noValidate autoComplete="off">
             <OutlinedInput
               className={classes.inputs}
+              color="secondary"
               margin="normal"
               required
               fullWidth
@@ -114,6 +114,8 @@ export default function LoginPage() {
               name="username"
             />
             <OutlinedInput
+              className={classes.inputs}
+              color="secondary"
               fullWidth
               required
               placeholder="Hasło"
