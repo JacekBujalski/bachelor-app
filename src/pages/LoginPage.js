@@ -90,7 +90,6 @@ export default function LoginPage() {
     let username = values.username;
     let password = values.password;
     dispatch(login({ username, password }));
-    console.log(username, password);
   };
 
   return (
