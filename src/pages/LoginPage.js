@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { login } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(7),
   },
   text: {
-    fontFamily: "Arbutus Slab",
     fontSize: "1.5rem",
   },
   form: {
@@ -56,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
     backgroundColor: theme.palette.secondary.main,
     fontSize: "1.1rem",
-    fontFamily: "Arbutus Slab",
     "&:hover": {
       backgroundColor: theme.palette.secondary.dark,
       boxShadow: "none",
@@ -66,8 +66,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LoginPage() {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
+    username: "",
     password: "",
     showPassword: false,
   });
@@ -80,8 +81,16 @@ export default function LoginPage() {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+  const handleMouseDownPassword = (e) => {
+    e.preventDefault();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let username = values.username;
+    let password = values.password;
+    dispatch(login({ username, password }));
+    console.log(username, password);
   };
 
   return (
@@ -102,16 +111,22 @@ export default function LoginPage() {
             <LockOutlinedIcon />
           </Avatar>
           <h1 className={classes.text}> Zaloguj się </h1>
-          <form className={classes.form} noValidate autoComplete="off">
+          <form
+            className={classes.form}
+            noValidate
+            autoComplete="off"
+            onSubmit={handleSubmit}
+          >
             <OutlinedInput
               className={classes.inputs}
               color="secondary"
-              margin="normal"
               required
               fullWidth
               id="username"
               placeholder="Nazwa Użytkownika"
               name="username"
+              value={values.username}
+              onChange={handleChange("username")}
             />
             <OutlinedInput
               className={classes.inputs}
