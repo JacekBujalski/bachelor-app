@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { logout } from "../redux/userSlice";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { adminRoutes } from "./admin/adminRoutes";
 import AdminMenu from "./admin/adminMenu";
 
