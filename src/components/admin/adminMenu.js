@@ -8,11 +8,14 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import {
+  AddBox,
+  AddCircle,
   Assessment,
   Business,
   DirectionsCar,
   Home,
   People,
+  PersonAdd,
   SpeakerNotes,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
@@ -60,6 +63,36 @@ export default function AdminMenu() {
               <Business />
             </ListItemIcon>
             <ListItemText primary={"Firmy"} />
+          </ListItem>
+        </Link>
+      </List>
+      <Divider />
+      <List>
+        <Link className={classes.menuLinks} to="/dashboard/users/addUser">
+          <ListItem button key={"AddUsers"}>
+            <ListItemIcon>
+              <PersonAdd />
+            </ListItemIcon>
+            <ListItemText primary={"Dodaj Użytkownika"} />
+          </ListItem>
+        </Link>
+        <Link className={classes.menuLinks} to="/dashboard/cars/addCar">
+          <ListItem button key={"AddCars"}>
+            <ListItemIcon>
+              <AddBox />
+            </ListItemIcon>
+            <ListItemText primary={"Dodaj Samochód"} />
+          </ListItem>
+        </Link>
+        <Link
+          className={classes.menuLinks}
+          to="/dashboard/companies/addCompany"
+        >
+          <ListItem button key={"AddCompanies"}>
+            <ListItemIcon>
+              <AddCircle />
+            </ListItemIcon>
+            <ListItemText primary={"Dodaj Firmę"} />
           </ListItem>
         </Link>
       </List>
