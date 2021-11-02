@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import { API_URL } from "../../API/api";
+import { API_URL } from "../../../API/api";
 import axios from "axios";
 import { DeleteOutline, Edit } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
@@ -34,89 +34,78 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CompanyTable() {
+export default function UserTable() {
   const classes = useStyles();
   const [data, setData] = useState([]);
 
-  const deleteCompany = (idCompany) => {
-    axios.delete(API_URL + "company/" + idCompany).then((response) => {
+  const deleteUser = (idUserData) => {
+    axios.delete(API_URL + "usersData/" + idUserData).then((response) => {
       if (response.data != null) {
-        alert("Firmę usunięto pomyślnie.");
-        getCompanyList();
+        alert("Użytkownika usunięto pomyślnie.");
+        getUserList();
       }
     });
   };
 
-  const getCompanyList = () => {
-    axios.get(API_URL + "company").then((response) => {
-      const companies = response.data;
-      setData(companies);
-      console.log(companies);
+  const getUserList = () => {
+    axios.get(API_URL + "usersData").then((response) => {
+      const users = response.data;
+      setData(users);
+      console.log(users);
     });
   };
 
   const columns = [
     {
-      field: "name",
-      headerName: "Nazwa",
+      field: "firstName",
+      headerName: "Imie",
       flex: 1,
     },
     {
-      field: "nip",
-      headerName: "Nip",
+      field: "lastName",
+      headerName: "Nazwisko",
       flex: 1,
     },
     {
-      field: "country",
-      headerName: "Kraj",
+      field: "phoneNumber",
+      headerName: "Numer Telefonu",
+      flex: 1,
+    },
+    {
+      field: "email",
+      headerName: "Email",
       flex: 1,
       renderCell: (params) => {
-        return <div>{params.row.address.country}</div>;
+        return <div>{params.row.user.email}</div>;
       },
     },
     {
-      field: "zipCode",
-      headerName: "Kod Pocztowy",
+      field: "role",
+      headerName: "Rola użytkownika",
       flex: 1,
       renderCell: (params) => {
-        return <div>{params.row.address.zipCode}</div>;
+        return <div className="rowitem">{params.row.user.role}</div>;
       },
     },
     {
-      field: "city",
-      headerName: "Miasto",
+      field: "company",
+      headerName: "Firma",
       flex: 1,
       renderCell: (params) => {
-        return <div>{params.row.address.city}</div>;
-      },
-    },
-    {
-      field: "street",
-      headerName: "Ulica",
-      flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.address.street}</div>;
-      },
-    },
-    {
-      field: "buildingNumber",
-      headerName: "Numer Budynku",
-      flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.address.buildingNumber}</div>;
+        return <div>{params.row.company.name}</div>;
       },
     },
     {
       field: "actions",
       headerName: "Akcje",
-      flex: 1.3,
+      flex: 1,
       type: "number",
       renderCell: (params) => {
         return (
           <div className={classes.actionButtons}>
             <Link
               className={classes.editLinkButton}
-              to={"/dashboard/cars/" + params.row.idCar}
+              to={"/dashboard/users/" + params.row.idUserData}
             >
               <Button
                 variant="contained"
@@ -130,7 +119,7 @@ export default function CompanyTable() {
               variant="contained"
               className={classes.deleteButton}
               startIcon={<DeleteOutline />}
-              onClick={() => deleteCompany(params.row.idCompany)}
+              onClick={() => deleteUser(params.row.idUserData)}
             >
               Usuń
             </Button>
@@ -141,7 +130,7 @@ export default function CompanyTable() {
   ];
 
   useEffect(() => {
-    getCompanyList();
+    getUserList();
   }, []);
 
   return (
@@ -151,7 +140,7 @@ export default function CompanyTable() {
         rows={data}
         columns={columns}
         pageSize={25}
-        getRowId={(r) => r.idCompany}
+        getRowId={(r) => r.idUserData}
         autoHeight
       />
     </div>

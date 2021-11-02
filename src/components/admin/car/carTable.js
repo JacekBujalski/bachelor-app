@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import { API_URL } from "../../API/api";
+import { API_URL } from "../../../API/api";
 import axios from "axios";
 import { DeleteOutline, Edit } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
