@@ -1,22 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import { ExitToApp, Inbox, Mail, Home, People } from "@material-ui/icons";
+import { ExitToApp } from "@material-ui/icons";
 import {
   CssBaseline,
   Drawer,
   AppBar,
-  ListItemIcon,
-  ListItemText,
-  Divider,
   Toolbar,
-  List,
-  ListItem,
   IconButton,
 } from "@material-ui/core";
 import { logout } from "../redux/userSlice";
 import { Link, useHistory } from "react-router-dom";
 import { adminRoutes } from "./admin/adminRoutes";
+import AdminMenu from "./admin/adminMenu";
 
 const drawerWidth = 240;
 
@@ -96,35 +92,7 @@ export default function Dashboard() {
       >
         <Toolbar />
         <div className={classes.drawerContainer}>
-          <List>
-            <Link className={classes.menuLinks} to="/dashboard">
-              <ListItem button key={"Main"}>
-                <ListItemIcon>
-                  <Home />
-                </ListItemIcon>
-                <ListItemText primary={"Strona główna"} />
-              </ListItem>
-            </Link>
-            <Link className={classes.menuLinks} to="/dashboard/users">
-              <ListItem button key={"Users"}>
-                <ListItemIcon>
-                  <People />
-                </ListItemIcon>
-                <ListItemText primary={"Użytkownicy"} />
-              </ListItem>
-            </Link>
-          </List>
-          <Divider />
-          {/*<List>*/}
-          {/*  {["All mail", "Trash", "Spam"].map((text, index) => (*/}
-          {/*    <ListItem button key={text}>*/}
-          {/*      <ListItemIcon>*/}
-          {/*        {index % 2 === 0 ? <Inbox /> : <Mail />}*/}
-          {/*      </ListItemIcon>*/}
-          {/*      <ListItemText primary={text} />*/}
-          {/*    </ListItem>*/}
-          {/*  ))}*/}
-          {/*</List>*/}
+          <AdminMenu />
         </div>
       </Drawer>
       <main className={classes.content}>
