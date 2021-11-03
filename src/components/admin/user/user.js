@@ -4,7 +4,7 @@ import { Button, Divider, Paper } from "@material-ui/core";
 import { Email, PermIdentity, PhoneAndroid } from "@material-ui/icons";
 import axios from "axios";
 import { API_URL } from "../../../API/api";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#e80606",
     },
+  },
+  buttonLink: {
+    textDecoration: "none",
+    color: "inherit",
   },
   userContainer: {
     display: "flex",
@@ -165,7 +169,11 @@ export default function User(props) {
     <div className={classes.root}>
       <div className={classes.userTitleContainer}>
         <h1 className={classes.userTitle}> Edytuj użytkownika </h1>
-        <Button className={classes.userAddButton}>Dodaj użytkownika</Button>
+        <Button className={classes.userAddButton}>
+          <Link to="/dashboard/users/addUser" className={classes.buttonLink}>
+            Dodaj użytkownika
+          </Link>
+        </Button>
       </div>
       <div className={classes.userContainer}>
         <Paper className={classes.userDisplay} elevation={5}>
