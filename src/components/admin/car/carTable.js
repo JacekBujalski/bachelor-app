@@ -95,14 +95,14 @@ export default function CarTable() {
       field: "company",
       headerName: "Firma",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.company.name}</div>;
-      },
+      valueGetter: (params) => params.row.company.name,
     },
     {
       field: "actions",
       headerName: "Akcje",
       flex: 1.3,
+      sortable: false,
+      filterable: false,
       type: "number",
       renderCell: (params) => {
         return (
