@@ -6,6 +6,7 @@ import CompanyTable from "./company/companyTable";
 import UserAdd from "./user/userAdd";
 import CompanyAdd from "./company/companyAdd";
 import UserAddInfo from "./user/userAddInfo";
+import PostTable from "./post/postTable";
 
 export const adminRoutes = (
   <Switch>
@@ -32,6 +33,9 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/companies/addCompany">
       <CompanyAdd />
+    </Route>
+    <Route exact path="/dashboard/posts">
+      <PostTable />
     </Route>
   </Switch>
 );
