@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid, plPL } from "@material-ui/data-grid";
 import { API_URL } from "../../../API/api";
 import axios from "axios";
 import { DeleteOutline, Edit } from "@material-ui/icons";
@@ -70,46 +70,39 @@ export default function CompanyTable() {
       field: "country",
       headerName: "Kraj",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.address.country}</div>;
-      },
+      valueGetter: (params) => params.row.address.country,
     },
     {
       field: "zipCode",
       headerName: "Kod Pocztowy",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.address.zipCode}</div>;
-      },
+      valueGetter: (params) => params.row.address.zipCode,
     },
     {
       field: "city",
       headerName: "Miasto",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.address.city}</div>;
-      },
+      valueGetter: (params) => params.row.address.city,
     },
     {
       field: "street",
       headerName: "Ulica",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.address.street}</div>;
-      },
+      valueGetter: (params) => params.row.address.street,
     },
     {
       field: "buildingNumber",
       headerName: "Numer Budynku",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.address.buildingNumber}</div>;
-      },
+      sortable: false,
+      valueGetter: (params) => params.row.address.buildingNumber,
     },
     {
       field: "actions",
       headerName: "Akcje",
       flex: 1.3,
+      sortable: false,
+      filterable: false,
       type: "number",
       renderCell: (params) => {
         return (
@@ -153,6 +146,8 @@ export default function CompanyTable() {
         pageSize={25}
         getRowId={(r) => r.idCompany}
         autoHeight
+        hideFooterSelectedRowCount
+        localeText={plPL.props.MuiDataGrid.localeText}
       />
     </div>
   );

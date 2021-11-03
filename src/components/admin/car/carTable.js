@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid, plPL } from "@material-ui/data-grid";
 import { API_URL } from "../../../API/api";
 import axios from "axios";
 import { DeleteOutline, Edit } from "@material-ui/icons";
@@ -146,6 +146,8 @@ export default function CarTable() {
         pageSize={25}
         getRowId={(r) => r.idCar}
         autoHeight
+        hideFooterSelectedRowCount
+        localeText={plPL.props.MuiDataGrid.localeText}
       />
     </div>
   );

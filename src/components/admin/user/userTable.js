@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid, plPL } from "@material-ui/data-grid";
 import { API_URL } from "../../../API/api";
 import axios from "axios";
 import { DeleteOutline, Edit } from "@material-ui/icons";
@@ -75,30 +75,26 @@ export default function UserTable() {
       field: "email",
       headerName: "Email",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.user.email}</div>;
-      },
+      valueGetter: (params) => params.row.user.email,
     },
     {
       field: "role",
       headerName: "Rola użytkownika",
       flex: 1,
-      renderCell: (params) => {
-        return <div className="rowitem">{params.row.user.role}</div>;
-      },
+      valueGetter: (params) => params.row.user.role,
     },
     {
       field: "company",
       headerName: "Firma",
       flex: 1,
-      renderCell: (params) => {
-        return <div>{params.row.company.name}</div>;
-      },
+      valueGetter: (params) => params.row.company.name,
     },
     {
       field: "actions",
       headerName: "Akcje",
       flex: 1,
+      sortable: false,
+      filterable: false,
       type: "number",
       renderCell: (params) => {
         return (
@@ -142,6 +138,8 @@ export default function UserTable() {
         pageSize={25}
         getRowId={(r) => r.idUserData}
         autoHeight
+        hideFooterSelectedRowCount
+        localeText={plPL.props.MuiDataGrid.localeText}
       />
     </div>
   );
