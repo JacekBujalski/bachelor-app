@@ -4,6 +4,7 @@ import User from "./user/user";
 import CarTable from "./car/carTable";
 import CompanyTable from "./company/companyTable";
 import UserAdd from "./user/userAdd";
+import CompanyAdd from "./company/companyAdd";
 
 export const adminRoutes = (
   <Switch>
@@ -24,6 +25,9 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/companies">
       <CompanyTable />
+    </Route>
+    <Route exact path="/dashboard/companies/addCompany">
+      <CompanyAdd />
     </Route>
   </Switch>
 );
