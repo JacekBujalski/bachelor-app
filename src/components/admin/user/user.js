@@ -142,12 +142,11 @@ export default function User(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setInputData({
-      ...inputData,
-      userId: inputData.user.idUsers,
-      companyId: inputData.company.idCompany,
+    axios.put(API_URL + "usersData/" + idUser, inputData).then((response) => {
+      if (response.data != null) {
+        alert("Dane użytkownika zaaktualizowano pomyślnie.");
+      }
     });
-    console.log(inputData);
   };
 
   const params = useParams();
@@ -156,6 +155,8 @@ export default function User(props) {
   const getUserList = (idUser) => {
     axios.get(API_URL + "usersData/" + idUser).then((response) => {
       const users = response.data;
+      users.userId = users.user.idUsers;
+      users.companyId = users.company.idCompany;
       setData(users);
       setInputData(users);
     });
