@@ -76,7 +76,7 @@ export default function AdminMenu() {
             <ListItemText primary={"Dodaj Użytkownika"} />
           </ListItem>
         </Link>
-        <Link className={classes.menuLinks} to="/dashboard/cars/addCar">
+        <Link className={classes.menuLinks} to="/dashboard/cars/addInsurance">
           <ListItem button key={"AddCars"}>
             <ListItemIcon>
               <AddBox />

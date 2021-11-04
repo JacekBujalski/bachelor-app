@@ -8,6 +8,8 @@ import CompanyAdd from "./company/companyAdd";
 import UserAddInfo from "./user/userAddInfo";
 import PostTable from "./post/postTable";
 import AddressAdd from "./company/addressAdd";
+import InsuranceAdd from "./car/insuranceAdd";
+import CarAdd from "./car/carAdd";
 
 export const adminRoutes = (
   <Switch>
@@ -28,6 +30,12 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/cars">
       <CarTable />
+    </Route>
+    <Route exact path="/dashboard/cars/addInsurance">
+      <InsuranceAdd />
+    </Route>
+    <Route exact path="/dashboard/cars/addCar">
+      <CarAdd />
     </Route>
     <Route exact path="/dashboard/companies">
       <CompanyTable />
