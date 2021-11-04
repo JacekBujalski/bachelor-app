@@ -86,7 +86,7 @@ export default function AdminMenu() {
         </Link>
         <Link
           className={classes.menuLinks}
-          to="/dashboard/companies/addCompany"
+          to="/dashboard/companies/addAddress"
         >
           <ListItem button key={"AddCompanies"}>
             <ListItemIcon>
