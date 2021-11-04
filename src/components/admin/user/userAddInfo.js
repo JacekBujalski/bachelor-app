@@ -97,7 +97,6 @@ export default function UserAddInfo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
     axios.post(API_URL + "usersData", values).then((res) => {
       if (res.status === 200) {
         localStorage.removeItem("usersId");
