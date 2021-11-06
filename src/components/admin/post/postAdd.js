@@ -177,7 +177,8 @@ export default function PostAdd() {
           <MuiPickersUtilsProvider locale={pl} utils={DateFnsUtils}>
             <KeyboardDatePicker
               autoOk
-              variant="inline"
+              cancelLabel={"Anuluj"}
+              variant="dialog"
               inputVariant="outlined"
               format="dd.MM.yyyy"
               value={selectedDate}
