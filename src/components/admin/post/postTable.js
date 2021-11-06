@@ -101,7 +101,7 @@ export default function PostTable() {
               variant="contained"
               className={classes.deleteButton}
               startIcon={<DeleteOutline />}
-              onClick={() => deletePost(params.row.idCar)}
+              onClick={() => deletePost(params.row.idPost)}
             >
               Usuń
             </Button>
