@@ -197,7 +197,7 @@ export default function CarAdd() {
             className={classes.carItemSelect}
             onChange={handleChange("companyId")}
           >
-            <option> Czy zajęty</option>
+            <option> Wybierz firmę</option>
             {companies.map((company) => (
               <option key={company.idCompany} value={company.idCompany}>
                 {company.name}
