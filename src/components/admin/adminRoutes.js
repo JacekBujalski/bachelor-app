@@ -11,6 +11,7 @@ import AddressAdd from "./company/addressAdd";
 import InsuranceAdd from "./car/insuranceAdd";
 import CarAdd from "./car/carAdd";
 import PostAdd from "./post/postAdd";
+import Car from "./car/car";
 
 export const adminRoutes = (
   <Switch>
@@ -37,6 +38,9 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/cars/addCar">
       <CarAdd />
+    </Route>
+    <Route exact path="/dashboard/cars/:id">
+      <Car />
     </Route>
     <Route exact path="/dashboard/companies">
       <CompanyTable />
