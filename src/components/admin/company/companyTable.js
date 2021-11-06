@@ -109,7 +109,7 @@ export default function CompanyTable() {
           <div className={classes.actionButtons}>
             <Link
               className={classes.editLinkButton}
-              to={"/dashboard/cars/" + params.row.idCar}
+              to={"/dashboard/companies/" + params.row.idCompany}
             >
               <Button
                 variant="contained"
