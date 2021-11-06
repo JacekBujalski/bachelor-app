@@ -16,6 +16,7 @@ import {
   Home,
   People,
   PersonAdd,
+  PostAdd,
   SpeakerNotes,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
@@ -106,6 +107,15 @@ export default function AdminMenu() {
             <ListItemText primary={"Posty"} />
           </ListItem>
         </Link>
+        <Link className={classes.menuLinks} to="/dashboard/posts/addPost">
+          <ListItem button key={"AddPosts"}>
+            <ListItemIcon>
+              <PostAdd />
+            </ListItemIcon>
+            <ListItemText primary={"Dodaj post"} />
+          </ListItem>
+        </Link>
+        <Divider />
         <Link className={classes.menuLinks} to="/dashboard/reports">
           <ListItem button key={"Reports"}>
             <ListItemIcon>

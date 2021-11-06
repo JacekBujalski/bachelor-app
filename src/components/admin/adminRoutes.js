@@ -10,6 +10,7 @@ import PostTable from "./post/postTable";
 import AddressAdd from "./company/addressAdd";
 import InsuranceAdd from "./car/insuranceAdd";
 import CarAdd from "./car/carAdd";
+import PostAdd from "./post/postAdd";
 
 export const adminRoutes = (
   <Switch>
@@ -48,6 +49,9 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/posts">
       <PostTable />
+    </Route>
+    <Route exact path="/dashboard/posts/addPost">
+      <PostAdd />
     </Route>
   </Switch>
 );
