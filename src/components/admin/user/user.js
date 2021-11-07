@@ -224,7 +224,6 @@ export default function User(props) {
                   name={"firstName"}
                   type="text"
                   placeholder={data.firstName}
-                  defaultValue={inputData.firstName}
                   className={classes.userEditInput}
                   onChange={handleChange("firstName")}
                 />
@@ -235,7 +234,6 @@ export default function User(props) {
                   name={"lastName"}
                   type="text"
                   placeholder={data.lastName}
-                  defaultValue={inputData.lastName}
                   className={classes.userEditInput}
                   onChange={handleChange("lastName")}
                 />
@@ -246,7 +244,6 @@ export default function User(props) {
                   name={"phoneNumber"}
                   type="text"
                   placeholder={data.phoneNumber}
-                  defaultValue={inputData.phoneNumber}
                   className={classes.userEditInput}
                   onChange={handleChange("phoneNumber")}
                 />
