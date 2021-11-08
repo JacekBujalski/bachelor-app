@@ -12,6 +12,7 @@ import InsuranceAdd from "./car/insuranceAdd";
 import CarAdd from "./car/carAdd";
 import PostAdd from "./post/postAdd";
 import Car from "./car/car";
+import Post from "./post/post";
 
 export const adminRoutes = (
   <Switch>
@@ -56,6 +57,9 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/posts/addPost">
       <PostAdd />
+    </Route>
+    <Route exact path="/dashboard/posts/:id">
+      <Post />
     </Route>
   </Switch>
 );
