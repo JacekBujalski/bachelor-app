@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Divider, Paper, Switch } from "@material-ui/core";
+import {
+  Button,
+  Divider,
+  FormControlLabel,
+  Paper,
+  Switch,
+} from "@material-ui/core";
 import { Business, CreditCard, DriveEta, Phone } from "@material-ui/icons";
 import axios from "axios";
 import { API_URL } from "../../../API/api";
@@ -91,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
   },
   carEditSwitch: {
     display: "flex",
+    justifyContent: "space-between",
     alignItems: "center",
   },
   carEditForm: {
@@ -310,10 +317,16 @@ export default function Car(props) {
         <Paper className={classes.carEdit} elevation={5}>
           <div className={classes.carEditSwitch}>
             <span className={classes.carEditTitle}>Edycja danych</span>
-            <Switch
-              className={classes.carEditTitle}
-              checked={formSwitch}
-              onChange={handleSwitchChange}
+            <FormControlLabel
+              control={
+                <Switch
+                  className={classes.carEditTitle}
+                  checked={formSwitch}
+                  onChange={handleSwitchChange}
+                />
+              }
+              labelPlacement="start"
+              label={formSwitch ? "Edycja auta" : "Edycja ubezpieczenia"}
             />
           </div>
           {formSwitch ? (
