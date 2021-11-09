@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Divider, Paper } from "@material-ui/core";
-import { Email, PermIdentity, PhoneAndroid } from "@material-ui/icons";
 import axios from "axios";
 import { API_URL } from "../../../API/api";
 import { Link, useParams } from "react-router-dom";
