@@ -14,6 +14,9 @@ import PostAdd from "./post/postAdd";
 import Car from "./car/car";
 import Post from "./post/post";
 import Company from "./company/company";
+import ServiceTable from "./service/serviceTable";
+import ServiceAdd from "./service/serviceAdd";
+import Service from "./service/service";
 
 export const adminRoutes = (
   <Switch>
@@ -64,6 +67,18 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/posts/:id">
       <Post />
+    </Route>
+    <Route exact path="/dashboard/posts/:id">
+      <Post />
+    </Route>
+    <Route exact path="/dashboard/services/">
+      <ServiceTable />
+    </Route>
+    <Route exact path="/dashboard/services/addService">
+      <ServiceAdd />
+    </Route>
+    <Route exact path="/dashboard/services/:id">
+      <Service />
     </Route>
   </Switch>
 );

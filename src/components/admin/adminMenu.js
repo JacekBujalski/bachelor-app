@@ -12,12 +12,14 @@ import {
   AddCircle,
   Assessment,
   Business,
+  Build,
   DirectionsCar,
   Home,
   People,
   PersonAdd,
   PostAdd,
   SpeakerNotes,
+  Event,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -113,6 +115,23 @@ export default function AdminMenu() {
               <PostAdd />
             </ListItemIcon>
             <ListItemText primary={"Dodaj post"} />
+          </ListItem>
+        </Link>
+        <Divider />
+        <Link className={classes.menuLinks} to="/dashboard/services">
+          <ListItem button key={"Services"}>
+            <ListItemIcon>
+              <Build />
+            </ListItemIcon>
+            <ListItemText primary={"Serwisy"} />
+          </ListItem>
+        </Link>
+        <Link className={classes.menuLinks} to="/dashboard/services/addService">
+          <ListItem button key={"AddServices"}>
+            <ListItemIcon>
+              <Event />
+            </ListItemIcon>
+            <ListItemText primary={"Dodaj serwis"} />
           </ListItem>
         </Link>
         <Divider />
