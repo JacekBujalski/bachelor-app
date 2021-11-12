@@ -12,7 +12,6 @@ import {
   AddCircle,
   Assessment,
   Business,
-  Build,
   DirectionsCar,
   Home,
   People,
@@ -20,6 +19,7 @@ import {
   PostAdd,
   SpeakerNotes,
   Event,
+  Today,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -118,20 +118,23 @@ export default function AdminMenu() {
           </ListItem>
         </Link>
         <Divider />
-        <Link className={classes.menuLinks} to="/dashboard/services">
-          <ListItem button key={"Services"}>
+        <Link className={classes.menuLinks} to="/dashboard/services/planned">
+          <ListItem button key={"PlannedServices"}>
             <ListItemIcon>
-              <Build />
+              <Today />
             </ListItemIcon>
-            <ListItemText primary={"Serwisy"} />
+            <ListItemText primary={"Planowane serwisy"} />
           </ListItem>
         </Link>
-        <Link className={classes.menuLinks} to="/dashboard/services/addService">
-          <ListItem button key={"AddServices"}>
+        <Link
+          className={classes.menuLinks}
+          to="/dashboard/services/planned/addService"
+        >
+          <ListItem button key={"AddPlannedServices"}>
             <ListItemIcon>
               <Event />
             </ListItemIcon>
-            <ListItemText primary={"Dodaj serwis"} />
+            <ListItemText primary={"Dodaj planowany serwis"} />
           </ListItem>
         </Link>
         <Divider />

@@ -14,9 +14,9 @@ import PostAdd from "./post/postAdd";
 import Car from "./car/car";
 import Post from "./post/post";
 import Company from "./company/company";
-import ServiceTable from "./service/serviceTable";
-import ServiceAdd from "./service/serviceAdd";
-import Service from "./service/service";
+import PlannedService from "./service/plannedService";
+import PlannedServiceAdd from "./service/plannedServiceAdd";
+import PlannedServicesTable from "./service/plannedServicesTable";
 
 export const adminRoutes = (
   <Switch>
@@ -71,14 +71,14 @@ export const adminRoutes = (
     <Route exact path="/dashboard/posts/:id">
       <Post />
     </Route>
-    <Route exact path="/dashboard/services/">
-      <ServiceTable />
+    <Route exact path="/dashboard/services/planned/">
+      <PlannedServicesTable />
     </Route>
-    <Route exact path="/dashboard/services/addService">
-      <ServiceAdd />
+    <Route exact path="/dashboard/services/planned/addService">
+      <PlannedServiceAdd />
     </Route>
-    <Route exact path="/dashboard/services/:id">
-      <Service />
+    <Route exact path="/dashboard/services/planned/:id">
+      <PlannedService />
     </Route>
   </Switch>
 );
