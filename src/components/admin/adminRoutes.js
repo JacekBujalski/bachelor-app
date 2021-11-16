@@ -17,6 +17,7 @@ import Company from "./company/company";
 import PlannedService from "./service/plannedService";
 import PlannedServiceAdd from "./service/plannedServiceAdd";
 import PlannedServicesTable from "./service/plannedServicesTable";
+import ReportPage from "../../pages/ReportPage";
 
 export const adminRoutes = (
   <Switch>
@@ -79,6 +80,9 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/services/planned/:id">
       <PlannedService />
+    </Route>
+    <Route exact path="/dashboard/reports">
+      <ReportPage />
     </Route>
   </Switch>
 );
