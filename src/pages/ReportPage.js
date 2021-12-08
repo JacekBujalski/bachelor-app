@@ -2,21 +2,10 @@ import React, { useEffect, useState } from "react";
 import { makeStyles, Paper } from "@material-ui/core";
 import axios from "axios";
 import { API_URL } from "../API/api";
+import { Route, Switch } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-    display: "flex",
-    alignItems: "start",
-    justifyContent: "space-between",
-  },
   selectContainer: {
-    flex: 0.5,
-    padding: theme.spacing(2),
-    marginRight: theme.spacing(8),
-  },
-  contentContainer: {
-    flex: 2,
     padding: theme.spacing(2),
   },
   item: {
@@ -31,15 +20,6 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 600,
       color: "#9b9b9b",
     },
-    "& input": {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-      padding: theme.spacing(1),
-      fontSize: "1.1rem",
-      border: "1px solid gray",
-      borderRadius: "5px",
-      color: "#9b9b9b",
-    },
   },
   itemSelect: {
     fontSize: "1.1rem",
@@ -49,14 +29,20 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
+  errorMessage: {
+    marginTop: theme.spacing(4),
+    fontSize: "1.4rem",
+    color: "#d32f2f",
+  },
 }));
 
 export default function ReportPage(props) {
   const classes = useStyles();
   const [companies, setCompanies] = useState([]);
   const [showCarSelect, setShowCarSelect] = useState(false);
-  const [cars, setCars] = useState([]);
+  const [cars, setCars] = useState({});
   const [values, setValues] = useState({});
+  const reportType = ["Raport tankowań", "Raport uszkodzeń", "Raport serwisów"];
 
   const getCompaniesList = () => {
     axios.get(API_URL + "company/").then((response) => {
@@ -68,8 +54,13 @@ export default function ReportPage(props) {
   const getCarsList = (companyId) => {
     axios.get(API_URL + "company/" + companyId + "/cars").then((response) => {
       const data = response.data;
+      console.log(data);
       setCars(data);
-      setShowCarSelect((prevState) => !prevState);
+      if (Array.isArray(data) && data.length) {
+        setShowCarSelect(true);
+      } else {
+        setShowCarSelect(false);
+      }
     });
   };
 
@@ -88,23 +79,23 @@ export default function ReportPage(props) {
   };
 
   return (
-    <Paper elevation={3} className={classes.root}>
-      <Paper elevation={3} className={classes.selectContainer}>
-        <div className={classes.item}>
-          <label>Wybierz firmę</label>
-          <select
-            className={classes.itemSelect}
-            onChange={handleChange("companyId")}
-          >
-            <option> Wybierz firmę</option>
-            {companies.map((company) => (
-              <option key={company.idCompany} value={company.idCompany}>
-                {company.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        {showCarSelect ? (
+    <Paper elevation={3} className={classes.selectContainer}>
+      <div className={classes.item}>
+        <label>Wybierz firmę</label>
+        <select
+          className={classes.itemSelect}
+          onChange={handleChange("companyId")}
+        >
+          <option> Wybierz firmę</option>
+          {companies.map((company) => (
+            <option key={company.idCompany} value={company.idCompany}>
+              {company.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      {showCarSelect && cars ? (
+        <>
           <div className={classes.item}>
             <label>Wybierz samochód</label>
             <select
@@ -119,29 +110,27 @@ export default function ReportPage(props) {
               ))}
             </select>
           </div>
-        ) : (
-          ""
-        )}
-      </Paper>
-      <Paper elevation={3} className={classes.contentContainer}>
-        tu bedzie content <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-      </Paper>
+          <div className={classes.item}>
+            <label>Wybierz typ raportu</label>
+            <select
+              className={classes.itemSelect}
+              onChange={handleChange("reportType")}
+            >
+              <option> Wybierz typ raportu</option>
+              {reportType.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+              )}
+            </select>
+          </div>
+        </>
+      ) : (
+        <>
+          <h1 className={classes.errorMessage}> Brak samochodów w firmie</h1>
+        </>
+      )}
     </Paper>
   );
 }
