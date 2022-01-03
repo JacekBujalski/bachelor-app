@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import ManagerCars from "./car/managerCars";
+import ManagerUser from "./user/managerUsers";
 
 export const managerRoutes = (
   <Switch>
@@ -7,7 +8,7 @@ export const managerRoutes = (
       Hejka menago
     </Route>
     <Route exact path="/dashboard/manager/users">
-      Menago userzy
+      <ManagerUser />
     </Route>
     <Route exact path="/dashboard/manager/cars">
       <ManagerCars />
