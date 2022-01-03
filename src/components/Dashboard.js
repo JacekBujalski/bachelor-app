@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { ExitToApp } from "@material-ui/icons";
 import {
@@ -13,6 +13,8 @@ import { logout } from "../redux/userSlice";
 import { useHistory } from "react-router-dom";
 import { adminRoutes } from "./admin/adminRoutes";
 import AdminMenu from "./admin/adminMenu";
+import ManagerMenu from "./manager/managerMenu";
+import { managerRoutes } from "./manager/managerRoutes";
 
 const drawerWidth = 240;
 
@@ -62,6 +64,10 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const { userRole, adminRole, managerRole, isLoggedIn } = useSelector(
+    (state) => state.user
+  );
+
   const handleLogout = () => {
     dispatch(logout());
     history.push("/login");
@@ -92,12 +98,16 @@ export default function Dashboard() {
       >
         <Toolbar />
         <div className={classes.drawerContainer}>
-          <AdminMenu />
+          {isLoggedIn
+            ? (adminRole && <AdminMenu />) || (managerRole && <ManagerMenu />)
+            : ""}
         </div>
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        {adminRoutes}
+        {isLoggedIn
+          ? (adminRole && adminRoutes) || (managerRole && managerRoutes)
+          : ""}
       </main>
     </div>
   );
