@@ -36,7 +36,7 @@ export default function ManagerMenu() {
   return (
     <>
       <List>
-        <Link className={classes.menuLinks} to="/dashboard">
+        <Link className={classes.menuLinks} to="/dashboard/manager">
           <ListItem button key={"Main"}>
             <ListItemIcon>
               <Home />
@@ -44,7 +44,7 @@ export default function ManagerMenu() {
             <ListItemText primary={"Strona główna"} />
           </ListItem>
         </Link>
-        <Link className={classes.menuLinks} to="/dashboard/users">
+        <Link className={classes.menuLinks} to="/dashboard/manager/users">
           <ListItem button key={"Users"}>
             <ListItemIcon>
               <People />
@@ -52,7 +52,7 @@ export default function ManagerMenu() {
             <ListItemText primary={"Użytkownicy"} />
           </ListItem>
         </Link>
-        <Link className={classes.menuLinks} to="/dashboard/cars">
+        <Link className={classes.menuLinks} to="/dashboard/manager/cars">
           <ListItem button key={"Cars"}>
             <ListItemIcon>
               <DirectionsCar />
@@ -63,7 +63,7 @@ export default function ManagerMenu() {
       </List>
       <Divider />
       <List>
-        <Link className={classes.menuLinks} to="/dashboard/posts">
+        <Link className={classes.menuLinks} to="/dashboard/manager/posts">
           <ListItem button key={"Posts"}>
             <ListItemIcon>
               <SpeakerNotes />
@@ -72,7 +72,10 @@ export default function ManagerMenu() {
           </ListItem>
         </Link>
         <Divider />
-        <Link className={classes.menuLinks} to="/dashboard/services/planned">
+        <Link
+          className={classes.menuLinks}
+          to="/dashboard/manager/services/planned"
+        >
           <ListItem button key={"PlannedServices"}>
             <ListItemIcon>
               <Today />
@@ -82,7 +85,7 @@ export default function ManagerMenu() {
         </Link>
         <Link
           className={classes.menuLinks}
-          to="/dashboard/services/planned/addService"
+          to="/dashboard/manager/services/planned/addService"
         >
           <ListItem button key={"AddPlannedServices"}>
             <ListItemIcon>
@@ -92,7 +95,7 @@ export default function ManagerMenu() {
           </ListItem>
         </Link>
         <Divider />
-        <Link className={classes.menuLinks} to="/dashboard/reports">
+        <Link className={classes.menuLinks} to="/dashboard/manager/reports">
           <ListItem button key={"Reports"}>
             <ListItemIcon>
               <Assessment />
