@@ -18,7 +18,7 @@ function App() {
       {isLoggedIn ? (
         (userRole && <Redirect to="/user" />) ||
         (adminRole && <Redirect to="/dashboard" />) ||
-        (managerRole && <Redirect to="/dashboard" />)
+        (managerRole && <Redirect to="/dashboard/manager" />)
       ) : (
         <Redirect to="/login" />
       )}
