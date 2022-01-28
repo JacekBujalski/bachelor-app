@@ -55,9 +55,7 @@ export default function ManagerMenu() {
             <ListItemText primary={"Samochody"} />
           </ListItem>
         </Link>
-      </List>
-      <Divider />
-      <List>
+        <Divider />
         <Link className={classes.menuLinks} to="/dashboard/manager/posts">
           <ListItem button key={"Posts"}>
             <ListItemIcon>
