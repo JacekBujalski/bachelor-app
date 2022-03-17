@@ -106,8 +106,8 @@ export default function ManagerReports() {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
   const [dates, setDates] = useState({
-    dateFrom: moment(dateFrom).format("DD-MM-yyyy"),
-    dateTo: moment(dateTo).format("DD-MM-yyyy"),
+    dateFrom: moment(dateFrom).format("yyyy-MM-DD"),
+    dateTo: moment(dateTo).format("yyyy-MM-DD"),
   });
   const [values, setValues] = useState({
     carId: "",
@@ -152,12 +152,12 @@ export default function ManagerReports() {
   }, []);
 
   useEffect(() => {
-    let formattedDateFrom = moment(dateFrom).format("DD-MM-yyyy");
+    let formattedDateFrom = moment(dateFrom).format("yyyy-MM-DD");
     setDates({ ...dates, dateFrom: formattedDateFrom });
   }, [dateFrom]);
 
   useEffect(() => {
-    let formattedDate = moment(dateTo).format("DD-MM-yyyy");
+    let formattedDate = moment(dateTo).format("yyyy-MM-DD");
     setDates({ ...dates, dateTo: formattedDate });
   }, [dateTo]);
 
