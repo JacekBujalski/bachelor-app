@@ -3,6 +3,9 @@ import { DataGrid, plPL } from "@material-ui/data-grid";
 import { API_URL } from "../../../API/api";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { Event } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,11 +18,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     margin: theme.spacing(1),
   },
-  editButton: {
+  button: {
     display: "flex",
     border: "none",
     borderRadius: "10px",
     marginRight: theme.spacing(1),
+  },
+  linkButton: {
+    textDecoration: "none",
   },
 }));
 
@@ -72,6 +78,32 @@ export default function ManagerCars() {
       field: "plateNumber",
       headerName: "Rejestracja",
       flex: 1,
+    },
+    {
+      field: "actions",
+      headerName: "Akcje",
+      flex: 1.1,
+      sortable: false,
+      filterable: false,
+      type: "number",
+      renderCell: (params) => {
+        return (
+          <div className={classes.actionButtons}>
+            <Link
+              className={classes.linkButton}
+              to={"/dashboard/manager/services/planned/" + params.row.idCar}
+            >
+              <Button
+                variant="contained"
+                className={classes.button}
+                startIcon={<Event />}
+              >
+                Planowane serwisy
+              </Button>
+            </Link>
+          </div>
+        );
+      },
     },
   ];
 
