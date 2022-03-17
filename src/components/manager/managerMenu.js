@@ -14,7 +14,6 @@ import {
   People,
   SpeakerNotes,
   Event,
-  Today,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -65,17 +64,6 @@ export default function ManagerMenu() {
           </ListItem>
         </Link>
         <Divider />
-        <Link
-          className={classes.menuLinks}
-          to="/dashboard/manager/services/planned"
-        >
-          <ListItem button key={"PlannedServices"}>
-            <ListItemIcon>
-              <Today />
-            </ListItemIcon>
-            <ListItemText primary={"Planowane serwisy"} />
-          </ListItem>
-        </Link>
         <Link
           className={classes.menuLinks}
           to="/dashboard/manager/services/planned/addService"
