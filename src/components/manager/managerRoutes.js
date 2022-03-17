@@ -5,6 +5,9 @@ import ManagerReports from "./reports/managerReports";
 import ManagerFuelingReport from "./reports/managerFuelingReport";
 import ManagerServicesReport from "./reports/managerServicesReport";
 import ManagerDamagesReport from "./reports/managerDamagesReport";
+import ManagerPosts from "./posts/managerPosts";
+import ManagerPlannedTable from "./services/managerPlannedTable";
+import ManagerPlannedServiceAdd from "./services/managerAddPlannedService";
 
 export const managerRoutes = (
   <Switch>
@@ -18,13 +21,13 @@ export const managerRoutes = (
       <ManagerCars />
     </Route>
     <Route exact path="/dashboard/manager/posts">
-      Menago posty firmowe
-    </Route>
-    <Route exact path="/dashboard/manager/services/planned">
-      Menago planowane serwisy
+      <ManagerPosts />
     </Route>
     <Route exact path="/dashboard/manager/services/planned/addService">
-      Menago dodaj planowane serwisy
+      <ManagerPlannedServiceAdd />
+    </Route>
+    <Route exact path="/dashboard/manager/services/planned/:id">
+      <ManagerPlannedTable />
     </Route>
     <Route exact path="/dashboard/manager/reports">
       <ManagerReports />
