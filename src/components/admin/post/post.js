@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button, Divider, Paper } from "@material-ui/core";
 import axios from "axios";
 import { API_URL } from "../../../API/api";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import moment from "moment";
 import { pl } from "date-fns/locale";
 import DateFnsUtils from "@date-io/date-fns";
@@ -161,6 +161,7 @@ export default function Post(props) {
   const [inputData, setInputData] = useState({});
 
   const classes = useStyles();
+  let history = useHistory();
 
   const handleChange = (prop) => (event) => {
     setInputData({ ...inputData, [prop]: event.target.value });
@@ -168,7 +169,6 @@ export default function Post(props) {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    console.log(selectedDate);
   };
 
   useEffect(() => {
@@ -181,6 +181,9 @@ export default function Post(props) {
     axios.put(API_URL + "posts/" + idPost, inputData).then((response) => {
       if (response.data != null) {
         alert("Post zaaktualizowano pomyślnie.");
+        setTimeout(() => {
+          history.push("/dashboard/posts");
+        }, 1000);
       }
     });
   };
@@ -194,10 +197,7 @@ export default function Post(props) {
       posts.companyId = posts.company.idCompany;
       setData(posts);
       setInputData(posts);
-      setInputData({
-        ...inputData,
-        date: moment(data.date).format("DD.MM.yyyy"),
-      });
+      setSelectedDate(posts.date);
     });
   };
 
@@ -261,10 +261,10 @@ export default function Post(props) {
               <div className={classes.postEditItem}>
                 <label> Opis </label>
                 <textarea
-                  name={"lastName"}
+                  name={"description"}
                   placeholder={data.description}
                   className={classes.postEditInputArea}
-                  onChange={handleChange("lastName")}
+                  onChange={handleChange("description")}
                 />
               </div>
               <div className={classes.postEditItem}>
@@ -276,7 +276,7 @@ export default function Post(props) {
                     variant="dialog"
                     inputVariant="standard"
                     format="dd.MM.yyyy"
-                    value={selectedDate}
+                    value={moment(selectedDate).format("yyyy-MM-DD")}
                     className={classes.postEditInputDatePicker}
                     InputAdornmentProps={{ position: "start" }}
                     onChange={(date) => handleDateChange(date)}
