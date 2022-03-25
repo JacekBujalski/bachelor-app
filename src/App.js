@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./components/Dashboard";
+import UserPage from "./pages/UserPage";
 
 function App() {
   const { userRole, adminRole, managerRole, isLoggedIn } = useSelector(
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path="/user" component={UserPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/dashboard" component={Dashboard} />
       </Switch>
