@@ -13,22 +13,16 @@ import DateFnsUtils from "@date-io/date-fns";
 import moment, { locale } from "moment";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    fontSize: "1rem",
-  },
-  paper: {
-    margin: "auto",
-    flex: 0.5,
+  selectContainer: {
     padding: theme.spacing(2),
-    textAlign: "center",
+    width: "50%",
+    margin: "auto",
   },
   title: {
     fontSize: "1.5rem",
     fontWeight: 600,
   },
   item: {
-    alignItems: "center",
     display: "flex",
     flex: 1,
     flexDirection: "column",
@@ -40,59 +34,25 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 600,
       color: "#9b9b9b",
     },
-    "& input": {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-      padding: theme.spacing(1),
-      fontSize: "1.1rem",
-      border: "1px solid gray",
-      borderRadius: "5px",
-      color: "#9b9b9b",
-    },
   },
   itemSelect: {
-    fontSize: "1rem",
-    width: "50%",
+    fontSize: "1.1rem",
     borderRadius: "5px",
     color: "#9b9b9b",
     padding: theme.spacing(1),
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
-  button: {
-    width: "50%",
+  generateButton: {
     border: "none",
     borderRadius: "5px",
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(4),
     padding: theme.spacing(2),
     fontSize: "1rem",
     backgroundColor: "#ff0000",
     color: "#fff",
     "&:hover": {
       backgroundColor: "#e80606",
-    },
-  },
-  picker: {
-    alignItems: "center",
-    display: "flex",
-    flex: 1,
-    flexDirection: "column",
-    marginTop: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    "& label": {
-      marginBottom: theme.spacing(2),
-      fontSize: "1.4rem",
-      fontWeight: 600,
-      color: "#9b9b9b",
-    },
-    "& input": {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-      padding: theme.spacing(1),
-      fontSize: "1.1rem",
-      border: "0px solid gray",
-      borderRadius: "5px",
-      color: "#9b9b9b",
     },
   },
 }));
@@ -162,74 +122,72 @@ export default function ManagerReports() {
   }, [dateTo]);
 
   return (
-    <div className={classes.root}>
-      <Paper elevation={3} className={classes.paper}>
-        <h1 className={classes.title}>Generowanie raportu</h1>
-        <Divider />
-        <form onSubmit={handleSubmit}>
-          <div className={classes.item}>
-            <label>Wybierz samochód</label>
-            <select
-              className={classes.itemSelect}
-              onChange={handleChange("carId")}
-            >
-              <option> Wybierz samochód</option>
-              {data.map((car) => (
-                <option key={car.idCar} value={car.idCar}>
-                  {car.carBrand} {car.carModel}, {car.plateNumber}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={classes.item}>
-            <label>Wybierz typ raportu</label>
-            <select
-              className={classes.itemSelect}
-              onChange={handleChange("reportType")}
-            >
-              <option> Wybierz typ raportu</option>
-              <option value={"fueling"}> Raport tankowań</option>
-              <option value={"services"}> Raport serwisowy</option>
-              <option value={"damages"}> Raport uszkodzeń</option>
-            </select>
-          </div>
-          <div className={classes.picker}>
-            <label>Data od</label>
-            <MuiPickersUtilsProvider locale={pl} utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                autoOk
-                cancelLabel={"Anuluj"}
-                variant="dialog"
-                inputVariant="outlined"
-                format="dd.MM.yyyy"
-                value={dateFrom}
-                InputAdornmentProps={{ position: "start" }}
-                onChange={(date) => handleDateFromChange(date)}
-              />
-            </MuiPickersUtilsProvider>
-          </div>
-          <div className={classes.picker}>
-            <label>Data do</label>
-            <MuiPickersUtilsProvider locale={pl} utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                autoOk
-                cancelLabel={"Anuluj"}
-                variant="dialog"
-                inputVariant="outlined"
-                format="dd.MM.yyyy"
-                value={dateTo}
-                InputAdornmentProps={{ position: "start" }}
-                onChange={(date) => handleDateToChange(date)}
-              />
-            </MuiPickersUtilsProvider>
-          </div>
-          <div className={classes.item}>
-            <button type="submit" className={classes.button}>
-              Dalej >
-            </button>
-          </div>
-        </form>
-      </Paper>
-    </div>
+    <Paper elevation={3} className={classes.selectContainer}>
+      <h1 className={classes.title}>Generowanie raportu</h1>
+      <Divider />
+      <form onSubmit={handleSubmit}>
+        <div className={classes.item}>
+          <label>Wybierz samochód</label>
+          <select
+            className={classes.itemSelect}
+            onChange={handleChange("carId")}
+          >
+            <option> Wybierz samochód</option>
+            {data.map((car) => (
+              <option key={car.idCar} value={car.idCar}>
+                {car.carBrand} {car.carModel}, {car.plateNumber}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={classes.item}>
+          <label>Wybierz typ raportu</label>
+          <select
+            className={classes.itemSelect}
+            onChange={handleChange("reportType")}
+          >
+            <option> Wybierz typ raportu</option>
+            <option value={"fueling"}> Raport tankowań</option>
+            <option value={"services"}> Raport serwisowy</option>
+            <option value={"damages"}> Raport uszkodzeń</option>
+          </select>
+        </div>
+        <div className={classes.item}>
+          <label>Data od</label>
+          <MuiPickersUtilsProvider locale={pl} utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              autoOk
+              cancelLabel={"Anuluj"}
+              variant="dialog"
+              inputVariant="outlined"
+              format="dd.MM.yyyy"
+              value={dateFrom}
+              InputAdornmentProps={{ position: "start" }}
+              onChange={(date) => handleDateFromChange(date)}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
+        <div className={classes.item}>
+          <label>Data do</label>
+          <MuiPickersUtilsProvider locale={pl} utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              autoOk
+              cancelLabel={"Anuluj"}
+              variant="dialog"
+              inputVariant="outlined"
+              format="dd.MM.yyyy"
+              value={dateTo}
+              InputAdornmentProps={{ position: "start" }}
+              onChange={(date) => handleDateToChange(date)}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
+        <div className={classes.item}>
+          <button type="submit" className={classes.generateButton}>
+            Dalej >
+          </button>
+        </div>
+      </form>
+    </Paper>
   );
 }
