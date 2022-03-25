@@ -64,7 +64,7 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { userRole, adminRole, managerRole, isLoggedIn } = useSelector(
+  const { adminRole, managerRole, isLoggedIn } = useSelector(
     (state) => state.user
   );
 
