@@ -2,9 +2,9 @@ import { Route, Switch } from "react-router-dom";
 import ManagerCars from "./car/managerCars";
 import ManagerUser from "./user/managerUsers";
 import ManagerReports from "./reports/managerReports";
-import ManagerFuelingReport from "./reports/managerFuelingReport";
-import ManagerServicesReport from "./reports/managerServicesReport";
-import ManagerDamagesReport from "./reports/managerDamagesReport";
+import FuelingReport from "../shared/fuelingReport";
+import ServicesReport from "../shared/servicesReport";
+import DamagesReport from "../shared/damagesReport";
 import ManagerPosts from "./posts/managerPosts";
 import ManagerPlannedTable from "./services/managerPlannedTable";
 import ManagerPlannedServiceAdd from "./services/managerAddPlannedService";
@@ -33,13 +33,13 @@ export const managerRoutes = (
       <ManagerReports />
     </Route>
     <Route exact path="/dashboard/manager/reports/fueling/:id">
-      <ManagerFuelingReport />
+      <FuelingReport />
     </Route>
     <Route exact path="/dashboard/manager/reports/services/:id">
-      <ManagerServicesReport />
+      <ServicesReport />
     </Route>
     <Route exact path="/dashboard/manager/reports/damages/:id">
-      <ManagerDamagesReport />
+      <DamagesReport />
     </Route>
   </Switch>
 );

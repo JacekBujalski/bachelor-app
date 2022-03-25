@@ -18,6 +18,9 @@ import PlannedService from "./service/plannedService";
 import PlannedServiceAdd from "./service/plannedServiceAdd";
 import PlannedServicesTable from "./service/plannedServicesTable";
 import ReportPage from "../../pages/ReportPage";
+import FuelingReport from "../shared/fuelingReport";
+import ServicesReport from "../shared/servicesReport";
+import DamagesReport from "../shared/damagesReport";
 
 export const adminRoutes = (
   <Switch>
@@ -83,6 +86,15 @@ export const adminRoutes = (
     </Route>
     <Route exact path="/dashboard/reports">
       <ReportPage />
+    </Route>
+    <Route exact path="/dashboard/reports/fueling/:id">
+      <FuelingReport />
+    </Route>
+    <Route exact path="/dashboard/reports/services/:id">
+      <ServicesReport />
+    </Route>
+    <Route exact path="/dashboard/reports/damages/:id">
+      <DamagesReport />
     </Route>
   </Switch>
 );
