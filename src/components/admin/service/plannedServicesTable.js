@@ -74,7 +74,7 @@ export default function PlannedServicesTable(props) {
       headerName: "Data",
       flex: 1,
       valueGetter: (params) =>
-        moment(params.row.date).format("DD.MM.yyyy hh:mm"),
+        moment(params.row.date).format("DD.MM.yyyy HH:mm"),
     },
     {
       field: "company",

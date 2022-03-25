@@ -52,7 +52,7 @@ export default function PlannedServiceAdd(props) {
   }, []);
 
   useEffect(() => {
-    let formattedDate = moment(selectedDate).format("yyyy-MM-DDThh:mm:ss");
+    let formattedDate = moment(selectedDate).format("yyyy-MM-DDTHH:mm:ss");
     setValues({ ...values, date: formattedDate });
   }, [selectedDate]);
 
