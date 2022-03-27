@@ -29,7 +29,7 @@ export default function PlannedService(props) {
   };
 
   useEffect(() => {
-    let formattedDate = moment(selectedDate).format("yyyy-MM-DDThh:mm:ss");
+    let formattedDate = moment(selectedDate).format("yyyy-MM-DDTHH:mm:ss");
     setInputData({ ...inputData, date: formattedDate });
   }, [selectedDate]);
 
@@ -48,6 +48,7 @@ export default function PlannedService(props) {
       planned.carId = planned.car.idCar;
       setData(planned);
       setInputData(planned);
+      setSelectedDate(planned.date);
     });
   };
 
@@ -82,7 +83,7 @@ export default function PlannedService(props) {
             <div className={classes.dataShowInfo}>
               <span className={classes.dataItemTitle}>Data : </span>
               <span className={classes.dataShowInfoTitle}>
-                {moment(data.date).format("DD.MM.yyyy hh:mm")}
+                {moment(data.date).format("DD.MM.yyyy HH:mm")}
               </span>
             </div>
             <div className={classes.dataShowInfo}>
@@ -112,11 +113,12 @@ export default function PlannedService(props) {
                   <KeyboardDateTimePicker
                     autoOk
                     ampm={false}
+                    disablePast={true}
                     cancelLabel={"Anuluj"}
                     variant="dialog"
                     inputVariant="standard"
                     format="dd.MM.yyyy HH:mm"
-                    value={selectedDate}
+                    value={moment(selectedDate).format("yyyy-MM-DDTHH:mm")}
                     className={classes.editInputDatePicker}
                     InputAdornmentProps={{ position: "start" }}
                     onChange={(date) => handleDateChange(date)}
