@@ -207,7 +207,7 @@ export default function CarAdd() {
         </div>
         <div className={classes.carItem}>
           <button type="submit" className={classes.carButton}>
-            Dodaj Firmę
+            Dodaj Auto
           </button>
         </div>
       </form>
